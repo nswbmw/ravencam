@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ekj-hc-NPE" customClass="WatermarkView" customModule="RavenCam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T91-sp-77T">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="552"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021 08 14" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cI-lg-i51">
+                            <rect key="frame" x="312" y="522" width="86" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="14" id="ULK-jD-744"/>
+                                <constraint firstAttribute="width" constant="86" id="yUL-x9-jcF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="7cI-lg-i51" secondAttribute="trailing" constant="16" id="6hj-qZ-TPs"/>
+                        <constraint firstAttribute="bottom" secondItem="7cI-lg-i51" secondAttribute="bottom" constant="16" id="hyu-Sg-rjR"/>
+                        <constraint firstAttribute="width" secondItem="T91-sp-77T" secondAttribute="height" multiplier="3:4" id="i7b-Mf-vaW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="b51-sL-MsX"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="b51-sL-MsX" firstAttribute="trailing" secondItem="T91-sp-77T" secondAttribute="trailing" id="NIl-JB-P1k"/>
+                <constraint firstItem="T91-sp-77T" firstAttribute="leading" secondItem="b51-sL-MsX" secondAttribute="leading" id="b0b-s9-kvx"/>
+                <constraint firstItem="T91-sp-77T" firstAttribute="top" secondItem="ekj-hc-NPE" secondAttribute="top" id="lNM-Xk-hTh"/>
+            </constraints>
+            <connections>
+                <outlet property="watermarkLabel" destination="7cI-lg-i51" id="Iz0-0t-EsD"/>
+            </connections>
+            <point key="canvasLocation" x="286.95652173913044" y="141.96428571428569"/>
+        </view>
+    </objects>
+</document>

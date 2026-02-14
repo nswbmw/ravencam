@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gotham-Book.otf">
+            <string>Gotham-Book</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="ur7-KY-QN6" customClass="SlideView" customModule="RavenCam" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="down" translatesAutoresizingMaskIntoConstraints="NO" id="bEx-Jz-Zbn">
+                    <rect key="frame" x="24" y="441" width="14" height="14"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="AkY-Fx-7rf"/>
+                        <constraint firstAttribute="height" constant="14" id="rvY-KA-eRf"/>
+                    </constraints>
+                </imageView>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="BfS-Po-1dv">
+                    <rect key="frame" x="60" y="433" width="278" height="31"/>
+                </slider>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0P-BK-RPc">
+                    <rect key="frame" x="360" y="438" width="34" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Wzd-nZ-aTS"/>
+                        <constraint firstAttribute="width" constant="34" id="uLz-Hj-urH"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Gotham-Book" family="Gotham" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.054901960784313725" green="0.054901960784313725" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="tzU-ik-5Dm" firstAttribute="trailing" secondItem="r0P-BK-RPc" secondAttribute="trailing" constant="20" id="0gu-C0-eNL"/>
+                <constraint firstItem="bEx-Jz-Zbn" firstAttribute="centerY" secondItem="ur7-KY-QN6" secondAttribute="centerY" id="1SM-lh-VCc"/>
+                <constraint firstItem="BfS-Po-1dv" firstAttribute="leading" secondItem="bEx-Jz-Zbn" secondAttribute="trailing" constant="24" id="5l1-tO-6Ty"/>
+                <constraint firstItem="r0P-BK-RPc" firstAttribute="centerY" secondItem="ur7-KY-QN6" secondAttribute="centerY" id="UaK-UK-Xhc"/>
+                <constraint firstItem="r0P-BK-RPc" firstAttribute="leading" secondItem="BfS-Po-1dv" secondAttribute="trailing" constant="24" id="cJP-Ze-y5i"/>
+                <constraint firstItem="bEx-Jz-Zbn" firstAttribute="leading" secondItem="tzU-ik-5Dm" secondAttribute="leading" constant="24" id="gn5-sd-HFH"/>
+                <constraint firstItem="BfS-Po-1dv" firstAttribute="centerY" secondItem="ur7-KY-QN6" secondAttribute="centerY" id="go3-AH-tNL"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="tzU-ik-5Dm"/>
+            <connections>
+                <outlet property="countLabel" destination="r0P-BK-RPc" id="uzp-ZM-xLG"/>
+                <outlet property="downImageView" destination="bEx-Jz-Zbn" id="wPb-C1-GOt"/>
+                <outlet property="slider" destination="BfS-Po-1dv" id="0eS-BE-reQ"/>
+            </connections>
+            <point key="canvasLocation" x="-49.275362318840585" y="-420.53571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="down" width="16" height="10"/>
+    </resources>
+</document>
