@@ -15,8 +15,8 @@
         <a href="https://swift.org">
             <img src="https://img.shields.io/badge/Swift-5-orange?logo=swift&logoColor=white" alt="Swift" />
         </a>
-        <a href="https://github.com/nswbmw/ravencam-iOS/blob/master/LICENSE">
-            <img src="https://img.shields.io/github/license/nswbmw/ravencam-iOS" alt="License" />
+        <a href="https://github.com/nswbmw/ravencam/blob/master/LICENSE">
+            <img src="https://img.shields.io/github/license/nswbmw/ravencam" alt="License" />
         </a>
         <a href="https://swift.org/package-manager/">
             <img src="https://img.shields.io/badge/SPM-compatible-brightgreen?logo=swift" alt="SPM" />
@@ -59,7 +59,7 @@
 
 1. 克隆仓库
    ```bash
-   git clone https://github.com/nswbmw/ravencam-iOS.git
+   git clone https://github.com/nswbmw/ravencam.git
    ```
 2. 用 Xcode 打开 `ravencam.xcodeproj`
 3. Xcode 会自动拉取 SPM 依赖
