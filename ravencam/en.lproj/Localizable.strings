@@ -1,0 +1,33 @@
+/* SettingViewController */
+"settings" = "Settings";
+"lossless_capture" = "Lossless Capture";
+"date_watermark" = "Date Watermark";
+"geolocation" = "Geolocation";
+"feedback" = "Feedback";
+"rate_app" = "Rate App";
+"feedback_email_subject" = "RavenCam - Feedback";
+"contact_us" = "Contact Us";
+"contact_us_message" = "Please send email to ravencam@nswbmw.com";
+"ok" = "OK";
+
+/* CameraViewController */
+"flash_off" = "Flash Off";
+"flash_on" = "Flash On";
+"flash_auto" = "Flash Auto";
+"exposure" = "Exposure";
+"contrast" = "Contrast";
+"sharpen" = "Sharpen";
+"vignette" = "Vignette";
+"noise" = "Noise";
+"blur" = "Blur";
+"saved" = "Saved";
+
+/* PhotoArgumentsView */
+"flash" = "Flash";
+"camera" = "Camera";
+
+/* AlbumViewController */
+"album" = "Album";
+
+/* Other */
+"other_apps" = "More Apps";

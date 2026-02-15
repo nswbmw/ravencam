@@ -56,56 +56,56 @@ class PhotoArgumentsView: UIView {
 
     flashLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     flashLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    flashLabel.text = "闪光灯"
+    flashLabel.text = NSLocalizedString("flash", comment: "")
     flashCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     flashCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     flashCountLabel.text = "off"
 
     flipLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     flipLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    flipLabel.text = "摄像头"
+    flipLabel.text = NSLocalizedString("camera", comment: "")
     flipCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     flipCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     flipCountLabel.text = "back"
 
     exposureLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     exposureLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    exposureLabel.text = "曝光"
+    exposureLabel.text = NSLocalizedString("exposure", comment: "")
     exposureCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     exposureCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     exposureCountLabel.text = "0.0"
 
     contrastLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     contrastLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    contrastLabel.text = "反差"
+    contrastLabel.text = NSLocalizedString("contrast", comment: "")
     contrastCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     contrastCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     contrastCountLabel.text = "0.0"
 
     sharpenLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     sharpenLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    sharpenLabel.text = "锐化"
+    sharpenLabel.text = NSLocalizedString("sharpen", comment: "")
     sharpenCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     sharpenCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     sharpenCountLabel.text = "0.0"
 
     vignetteLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     vignetteLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    vignetteLabel.text = "暗角"
+    vignetteLabel.text = NSLocalizedString("vignette", comment: "")
     vignetteCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     vignetteCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     vignetteCountLabel.text = "0.0"
 
     noiseLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     noiseLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    noiseLabel.text = "噪点"
+    noiseLabel.text = NSLocalizedString("noise", comment: "")
     noiseCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     noiseCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     noiseCountLabel.text = "0.0"
 
     blurLabel.font = UIFont(name: "PingFangSC-Light", size: 12)
     blurLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
-    blurLabel.text = "模糊"
+    blurLabel.text = NSLocalizedString("blur", comment: "")
     blurCountLabel.font = UIFont(name: "Gotham-Book", size: 18)
     blurCountLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     blurCountLabel.text = "0.0"

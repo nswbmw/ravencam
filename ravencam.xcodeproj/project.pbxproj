@@ -28,6 +28,7 @@
 		7B82933B2F400ECD009FC247 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B82933A2F400ECD009FC247 /* SnapKit */; };
 		7B8293402F400EEA009FC247 /* DefaultsKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7B82933F2F400EEA009FC247 /* DefaultsKit */; };
 		7B82934A2F401000009FC247 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B82934C2F401000009FC247 /* InfoPlist.strings */; };
+		7B8293502F401100009FC247 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8293522F401100009FC247 /* Localizable.strings */; };
 		7B844F9124A3A08200055C36 /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B844F8F24A3A08200055C36 /* AlbumViewController.swift */; };
 		7B844F9224A3A08200055C36 /* AlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B844F9024A3A08200055C36 /* AlbumViewController.xib */; };
 		7B844F9524A3A6AF00055C36 /* AlbumCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B844F9324A3A6AF00055C36 /* AlbumCollectionViewCell.swift */; };
@@ -84,6 +85,8 @@
 		7B7FB14124ACDD090063F6A9 /* PhotoWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoWithImage.swift; sourceTree = "<group>"; };
 		7B82934B2F401000009FC247 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7B82934D2F401000009FC247 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		7B8293512F401100009FC247 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7B8293532F401100009FC247 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		7B844F8F24A3A08200055C36 /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		7B844F9024A3A08200055C36 /* AlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumViewController.xib; sourceTree = "<group>"; };
 		7B844F9324A3A6AF00055C36 /* AlbumCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -231,6 +234,7 @@
 				7B482E1C2472E9C7006C7155 /* Assets.xcassets */,
 				7B482E212472E9C7006C7155 /* Info.plist */,
 				7B82934C2F401000009FC247 /* InfoPlist.strings */,
+				7B8293522F401100009FC247 /* Localizable.strings */,
 			);
 			path = ravencam;
 			sourceTree = "<group>";
@@ -394,6 +398,7 @@
 				7BAD8F7C24B084A9008FA073 /* SettingNormalCell.xib in Resources */,
 				7B844F9224A3A08200055C36 /* AlbumViewController.xib in Resources */,
 				7B82934A2F401000009FC247 /* InfoPlist.strings in Resources */,
+				7B8293502F401100009FC247 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,6 +461,15 @@
 				7B82934D2F401000009FC247 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		7B8293522F401100009FC247 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B8293512F401100009FC247 /* en */,
+				7B8293532F401100009FC247 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -582,7 +596,7 @@
 				CODE_SIGN_ENTITLEMENTS = ravencam/RavenCam.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 87VK78GA5P;
 				INFOPLIST_FILE = ravencam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
@@ -606,7 +620,7 @@
 				CODE_SIGN_ENTITLEMENTS = ravencam/RavenCam.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 87VK78GA5P;
 				INFOPLIST_FILE = ravencam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;

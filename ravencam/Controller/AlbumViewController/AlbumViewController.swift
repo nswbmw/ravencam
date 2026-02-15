@@ -33,7 +33,7 @@ class AlbumViewController: UIViewController {
     super.viewDidLoad()
     
     // 导航栏
-    navigationController?.navigationBar.topItem?.title = "相册"
+    navigationController?.navigationBar.topItem?.title = NSLocalizedString("album", comment: "")
     navigationController?.navigationBar.tintColor = UIColor.white
     navigationController?.navigationBar.barTintColor = .clear
     navigationController?.navigationBar.titleTextAttributes = [

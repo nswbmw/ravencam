@@ -1,1 +1,7 @@
 "CFBundleDisplayName" = "RavenCam";
+"NSCameraUsageDescription" = "Allow access to your camera to take photos";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "Allow access to your location to add to photos";
+"NSLocationAlwaysUsageDescription" = "Allow access to your location to add to photos";
+"NSLocationWhenInUseUsageDescription" = "Allow access to your location to add to photos";
+"NSPhotoLibraryAddUsageDescription" = "Allow access to your photo library to save photos";
+"NSPhotoLibraryUsageDescription" = "Allow access to your photo library to save photos";

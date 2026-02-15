@@ -170,19 +170,19 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     case "on":
       config.flash = "off"
       functionScrollView?.flashImageView.image = UIImage(named: "flash-off")
-      showToast(message: "闪光灯 关")
+      showToast(message: NSLocalizedString("flash_off", comment: ""))
     case "off":
       config.flash = "auto"
       functionScrollView?.flashImageView.image = UIImage(named: "flash-auto")
-      showToast(message: "闪光灯 自动")
+      showToast(message: NSLocalizedString("flash_auto", comment: ""))
     case "auto":
       config.flash = "on"
       functionScrollView?.flashImageView.image = UIImage(named: "flash-on")
-      showToast(message: "闪光灯 开")
+      showToast(message: NSLocalizedString("flash_on", comment: ""))
     default:
       config.flash = "off"
       functionScrollView?.flashImageView.image = UIImage(named: "flash-off")
-      showToast(message: "闪光灯 关")
+      showToast(message: NSLocalizedString("flash_off", comment: ""))
     }
     Cache.setConfig(config: config)
   }
@@ -223,17 +223,17 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     // 显示toast
     switch type {
     case "exposure":
-      showToast(message: "曝光")
+      showToast(message: NSLocalizedString("exposure", comment: ""))
     case "contrast":
-      showToast(message: "反差")
+      showToast(message: NSLocalizedString("contrast", comment: ""))
     case "sharpen":
-      showToast(message: "锐化")
+      showToast(message: NSLocalizedString("sharpen", comment: ""))
     case "vignette":
-      showToast(message: "暗角")
+      showToast(message: NSLocalizedString("vignette", comment: ""))
     case "noise":
-      showToast(message: "噪点")
+      showToast(message: NSLocalizedString("noise", comment: ""))
     case "blur":
-    showToast(message: "模糊")
+    showToast(message: NSLocalizedString("blur", comment: ""))
     default:
       break
     }
@@ -311,7 +311,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         print(error ?? "Capture error")
         return
       }
-      self.showToast(message: "保存成功")
+      self.showToast(message: NSLocalizedString("saved", comment: ""))
       
       // 是否添加日期水印
       if Cache.getWatermarkConfig() == true {

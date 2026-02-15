@@ -1,1 +1,7 @@
 "CFBundleDisplayName" = "渡鸦相机";
+"NSCameraUsageDescription" = "请允许访问您的摄像头拍摄图片";
+"NSLocationAlwaysAndWhenInUseUsageDescription" = "请允许访问您的地理位置添加到图片";
+"NSLocationAlwaysUsageDescription" = "请允许访问您的地理位置添加到图片";
+"NSLocationWhenInUseUsageDescription" = "请允许访问您的地理位置添加到图片";
+"NSPhotoLibraryAddUsageDescription" = "请允许访问您的相册存储图片";
+"NSPhotoLibraryUsageDescription" = "请允许访问您的相册存储图片";

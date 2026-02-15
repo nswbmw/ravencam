@@ -1,0 +1,33 @@
+/* SettingViewController */
+"settings" = "设置";
+"lossless_capture" = "无损拍摄";
+"date_watermark" = "日期水印";
+"geolocation" = "地理位置";
+"feedback" = "意见反馈";
+"rate_app" = "应用评分";
+"feedback_email_subject" = "渡鸦相机 - 意见反馈";
+"contact_us" = "联系我们";
+"contact_us_message" = "请发送邮件到 ravencam@nswbmw.com";
+"ok" = "确定";
+
+/* CameraViewController */
+"flash_off" = "闪光灯 关";
+"flash_on" = "闪光灯 开";
+"flash_auto" = "闪光灯 自动";
+"exposure" = "曝光";
+"contrast" = "反差";
+"sharpen" = "锐化";
+"vignette" = "暗角";
+"noise" = "噪点";
+"blur" = "模糊";
+"saved" = "保存成功";
+
+/* PhotoArgumentsView */
+"flash" = "闪光灯";
+"camera" = "摄像头";
+
+/* AlbumViewController */
+"album" = "相册";
+
+/* Other */
+"other_apps" = "其他作品";

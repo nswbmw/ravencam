@@ -20,7 +20,7 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     super.viewDidLoad()
     
     // 导航栏
-    navigationController?.navigationBar.topItem?.title = "设置"
+    navigationController?.navigationBar.topItem?.title = NSLocalizedString("settings", comment: "")
     navigationController?.navigationBar.tintColor = UIColor.white
     navigationController?.navigationBar.barTintColor = .clear
     navigationController?.navigationBar.titleTextAttributes = [
@@ -66,12 +66,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
       let mailView = MFMailComposeViewController()
       mailView.mailComposeDelegate = self
       mailView.setToRecipients(["ravencam@nswbmw.com"])
-      mailView.setSubject("RavenCam - 意见反馈")
+      mailView.setSubject(NSLocalizedString("feedback_email_subject", comment: ""))
       mailView.setMessageBody("", isHTML: false)
       self.present(mailView, animated: false, completion: nil)
     } else {
-      let alert = UIAlertController.init(title: "联系我们", message: "请发送邮件到 ravencam@nswbmw.com", preferredStyle: UIAlertController.Style.alert)
-      alert.addAction(UIAlertAction.init(title: "确定", style: UIAlertAction.Style.default, handler: { (alert) in
+      let alert = UIAlertController.init(title: NSLocalizedString("contact_us", comment: ""), message: NSLocalizedString("contact_us_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
+      alert.addAction(UIAlertAction.init(title: NSLocalizedString("ok", comment: ""), style: UIAlertAction.Style.default, handler: { (alert) in
       }))
       self.present(alert, animated: false, completion: nil)
     }
@@ -113,15 +113,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
       var cell: SettingSwitchCell!
       if indexPath.row == 0 {
         cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell") as! SettingSwitchCell
-        cell.titleLabel.text = "无损拍摄"
+        cell.titleLabel.text = NSLocalizedString("lossless_capture", comment: "")
         cell.proSwitch.isOn = Cache.getLoselessConfig()
       } else if indexPath.row == 1 {
         cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell") as! SettingSwitchCell
-        cell.titleLabel.text = "日期水印"
+        cell.titleLabel.text = NSLocalizedString("date_watermark", comment: "")
         cell.proSwitch.isOn = Cache.getWatermarkConfig()
       } else {
         cell = tableView.dequeueReusableCell(withIdentifier: "SettingSwitchCell") as! SettingSwitchCell
-        cell.titleLabel.text = "地理位置"
+        cell.titleLabel.text = NSLocalizedString("geolocation", comment: "")
         cell.proSwitch.isOn = Cache.getLocationConfig()
       }
       
@@ -132,15 +132,15 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     } else {
       if indexPath.row == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingNormalCell") as! SettingNormalCell
-        cell.titleLabel.text = "意见反馈"
+        cell.titleLabel.text = NSLocalizedString("feedback", comment: "")
         return cell
       } else if indexPath.row == 1 {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingNormalCell") as! SettingNormalCell
-        cell.titleLabel.text = "应用评分"
+        cell.titleLabel.text = NSLocalizedString("rate_app", comment: "")
         return cell
       } else {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingNormalCell") as! SettingNormalCell
-        cell.titleLabel.text = "其他作品"
+        cell.titleLabel.text = NSLocalizedString("other_apps", comment: "")
         return cell
       }
     }
