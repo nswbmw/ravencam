@@ -13,7 +13,7 @@ class SlideView: UIView {
   @IBOutlet weak var downImageView: UIImageView!
   @IBOutlet weak var slider: UISlider!
   @IBOutlet weak var countLabel: UILabel!
-  
+
   // 类型（点击哪个参数弹起来的），如: blur
   var type: String? {
     didSet {
@@ -57,23 +57,23 @@ class SlideView: UIView {
       }
     }
   }
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
 
     slider.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
     countLabel.font = UIFont(name: "Gotham-Book", size: 14)
-    
+
     // 双击countLabel，重置
     let doubleTapCountLabel = UITapGestureRecognizer(target: self, action: #selector(reset))
     doubleTapCountLabel.numberOfTapsRequired = 2
     countLabel.addGestureRecognizer(doubleTapCountLabel)
   }
-  
+
   // 重置
   @objc func reset() {
     Util.shake()
-    
+
     if type == nil {
       return
     }
@@ -84,7 +84,7 @@ class SlideView: UIView {
       countLabel.text = "0.0"
       config.exposure = 0
     case "contrast":
-      slider.value =  0
+      slider.value = 0
       countLabel.text = "0.0"
       config.contrast = 0
     case "sharpen":
@@ -106,8 +106,7 @@ class SlideView: UIView {
     default:
       break
     }
-    
+
     Cache.setConfig(config: config)
   }
-  
 }

@@ -11,12 +11,11 @@ import UIKit
 class SettingNormalCell: UITableViewCell {
 
   @IBOutlet weak var titleLabel: UILabel!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
-    
+
     titleLabel.font = UIFont(name: "PingFangSC-Regular", size: 15)
     titleLabel.textColor = UIColor.white
   }
-
 }

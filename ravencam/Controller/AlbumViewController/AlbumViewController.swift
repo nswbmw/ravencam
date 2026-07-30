@@ -12,9 +12,9 @@ import Photos
 class AlbumViewController: UIViewController {
 
   @IBOutlet weak var collectionView: UICollectionView!
-  
+
   var pageViewController: PageViewController?
-  
+
   var assets: [PHAsset] = []
   let options: PHImageRequestOptions = {
     let _options = PHImageRequestOptions()
@@ -22,17 +22,17 @@ class AlbumViewController: UIViewController {
     _options.deliveryMode = .opportunistic
     return _options
   }()
-  
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
+
     assets = PhotoUtil.shared.getAllAssets()
     collectionView.reloadData()
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     // 导航栏
     navigationController?.navigationBar.topItem?.title = NSLocalizedString("album", comment: "")
     navigationController?.navigationBar.tintColor = UIColor.white
@@ -45,13 +45,13 @@ class AlbumViewController: UIViewController {
     navigationController?.navigationBar.largeTitleTextAttributes = [
       NSAttributedString.Key.foregroundColor: UIColor.white
     ]
-    
+
     navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "forward"), style: .plain, target: self, action: #selector(forward))
 
     // 注册单元格
     let albumCollectionViewCellNib = UINib(nibName: "AlbumCollectionViewCell", bundle: Bundle.main)
     collectionView.register(albumCollectionViewCellNib, forCellWithReuseIdentifier: "AlbumCollectionViewCell")
-    
+
     // 布局
     let flowLayout = UICollectionViewFlowLayout()
     let cellWidth = (UIScreen.main.bounds.size.width - 18 * 3) / 2
@@ -61,7 +61,7 @@ class AlbumViewController: UIViewController {
     flowLayout.minimumInteritemSpacing = 18
     collectionView.setCollectionViewLayout(flowLayout, animated: true)
   }
-  
+
   @objc func forward() {
     self.pageViewController?.forwardToCameraViewController()
   }
@@ -72,12 +72,12 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return assets.count
   }
-  
+
   // cell 内容
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as! AlbumCollectionViewCell
     let asset = assets[indexPath.row]
-    
+
     let cellSize = (UIScreen.main.bounds.size.width - 18 * 3) / 2
     let targetSize = CGSize(width: cellSize * UIScreen.main.scale, height: cellSize * UIScreen.main.scale)
     PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options, resultHandler: { (img, info) in
@@ -87,11 +87,11 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     })
     return cell
   }
-  
+
   // cell 点击
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     Util.shake()
-    
+
     //进入图片全屏展示
     let photoPreviewController = PhotoPreviewController(assets: assets, index: indexPath.row)
     let previewNav = UINavigationController(rootViewController: photoPreviewController)

@@ -14,49 +14,50 @@ extension UIImage {
   // 改变大小
   func resizeImage(targetSize: CGSize) -> UIImage {
     let size = self.size
-    let widthRatio  = targetSize.width  / size.width
+    let widthRatio = targetSize.width / size.width
     let heightRatio = targetSize.height / size.height
-    let newSize = widthRatio > heightRatio ?  CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio,  height: size.height * widthRatio)
+    let newSize = widthRatio > heightRatio ? CGSize(width: size.width * heightRatio, height: size.height * heightRatio) : CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
     let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
-    
+
     UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
     self.draw(in: rect)
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    
+
     return newImage!
   }
-  
+
   // 旋转
   func rotate(radians: Float) -> UIImage? {
-      var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
-      // Trim off the extremely small float value to prevent core graphics from rounding it up
-      newSize.width = floor(newSize.width)
-      newSize.height = floor(newSize.height)
+    var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
+    // Trim off the extremely small float value to prevent core graphics from rounding it up
+    newSize.width = floor(newSize.width)
+    newSize.height = floor(newSize.height)
 
-      UIGraphicsBeginImageContextWithOptions(newSize, false, self.scale)
-      let context = UIGraphicsGetCurrentContext()!
+    UIGraphicsBeginImageContextWithOptions(newSize, false, self.scale)
+    let context = UIGraphicsGetCurrentContext()!
 
-      // Move origin to middle
-      context.translateBy(x: newSize.width/2, y: newSize.height/2)
-      // Rotate around middle
-      context.rotate(by: CGFloat(radians))
-      // Draw the image at its center
-      self.draw(in: CGRect(x: -self.size.width/2, y: -self.size.height/2, width: self.size.width, height: self.size.height))
+    // Move origin to middle
+    context.translateBy(x: newSize.width / 2, y: newSize.height / 2)
+    // Rotate around middle
+    context.rotate(by: CGFloat(radians))
+    // Draw the image at its center
+    self.draw(in: CGRect(x: -size.width / 2, y: -size.height / 2, width: size.width, height: size.height))
 
-      let newImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
 
-      return newImage
+    return newImage
   }
-  
+
   func alpha(_ alpha: CGFloat) -> UIImage? {
-      UIGraphicsBeginImageContextWithOptions(size, false, scale)
-      draw(at: .zero, blendMode: .normal, alpha: alpha)
-      let newImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-      return newImage
+    UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+    self.draw(at: .zero, blendMode: .normal, alpha: alpha)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return newImage
   }
+
   // 读取 EXIF
   func getEXIF() -> NSDictionary {
     let imageData: Data = self.jpegData(compressionQuality: 1)!
@@ -72,7 +73,7 @@ extension UIImage {
     let uti: CFString = CGImageSourceGetType(cgImgSource)!
     let dataWithEXIF: NSMutableData = NSMutableData(data: imageData)
     let destination: CGImageDestination = CGImageDestinationCreateWithData((dataWithEXIF as CFMutableData), uti, 1, nil)!
-    
+
     let imageProperties = CGImageSourceCopyPropertiesAtIndex(cgImgSource, 0, nil)! as NSDictionary
     let mutable: NSMutableDictionary = imageProperties.mutableCopy() as! NSMutableDictionary
 
@@ -87,16 +88,16 @@ extension UIImage {
 
     return dataWithEXIF as Data
   }
-  
+
   // 添加日期水印
-  func addWatermark()  -> UIImage {
+  func addWatermark() -> UIImage {
     let backgroundImage = self
     let width = backgroundImage.size.width
     let height = backgroundImage.size.height
 
     let watermarkViewNib = UINib(nibName: "WatermarkView", bundle: Bundle.main)
     let watermarkView = watermarkViewNib.instantiate(withOwner: self, options: nil)[0] as! WatermarkView
-    watermarkView.frame = CGRect(x: 0, y: 0, width: watermarkView.bounds.width, height: watermarkView.bounds.width * (height/width))
+    watermarkView.frame = CGRect(x: 0, y: 0, width: watermarkView.bounds.width, height: watermarkView.bounds.width * (height / width))
 
     let watermarkImage = watermarkView.asImage()
 

@@ -13,14 +13,14 @@ class Util {
   static func shake() {
     UIImpactFeedbackGenerator(style: .light).impactOccurred()
   }
-  
+
   // 日期
   static func getTime() -> String {
-    let dateFormatter : DateFormatter = DateFormatter()
+    let dateFormatter: DateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy MM dd"
     let date = Date()
     let dateString = dateFormatter.string(from: date)
-    
+
     return dateString
   }
 }

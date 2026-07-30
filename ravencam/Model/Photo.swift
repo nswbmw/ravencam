@@ -23,7 +23,7 @@ class Photo: Codable {
   var vignette: Float?
   var noise: Float?
   var blur: Float?
-  
+
   convenience init?(JSON: [String: Any]) {
     self.init()
     deviceId = JSON["deviceId"] as? String

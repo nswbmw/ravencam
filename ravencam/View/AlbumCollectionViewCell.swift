@@ -11,7 +11,7 @@ import UIKit
 class AlbumCollectionViewCell: UICollectionViewCell {
 
   @IBOutlet weak var photoImageView: UIImageView!
-  
+
   var image: UIImage? {
     didSet {
       if image == nil {
@@ -19,9 +19,5 @@ class AlbumCollectionViewCell: UICollectionViewCell {
       }
       photoImageView.image = image
     }
-  }
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
   }
 }

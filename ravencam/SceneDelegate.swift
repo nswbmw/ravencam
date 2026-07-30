@@ -14,15 +14,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    
+
     guard let windowScene = scene as? UIWindowScene else { return }
-    
+
     // Create the UIWindow using the windowScene
     window = UIWindow(windowScene: windowScene)
-        
+
     // Create a ViewController object and set it as the window's root view controller
     window?.rootViewController = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-    
+
     // Make this scene's window be visible
     window?.makeKeyAndVisible()
   }

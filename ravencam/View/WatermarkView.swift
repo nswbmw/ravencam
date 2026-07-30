@@ -11,7 +11,7 @@ import UIKit
 class WatermarkView: UIView {
 
   @IBOutlet weak var watermarkLabel: UILabel!
-  
+
   override func awakeFromNib() {
     super.awakeFromNib()
 

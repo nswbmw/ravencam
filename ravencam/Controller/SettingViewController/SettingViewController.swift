@@ -13,12 +13,12 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var versionLabel: UILabel!
-  
+
   var pageViewController: PageViewController?
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     // 导航栏
     navigationController?.navigationBar.topItem?.title = NSLocalizedString("settings", comment: "")
     navigationController?.navigationBar.tintColor = UIColor.white
@@ -26,43 +26,43 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
     navigationController?.navigationBar.titleTextAttributes = [
       NSAttributedString.Key.foregroundColor: UIColor.white
     ]
-    
+
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .automatic
     navigationController?.navigationBar.largeTitleTextAttributes = [
       NSAttributedString.Key.foregroundColor: UIColor.white
     ]
-    
+
     navigationController?.navigationBar.topItem?.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "back"), style: .plain, target: self, action: #selector(back))
-    
+
     // 注册单元格
     let settingSwitchCellNib = UINib(nibName: "SettingSwitchCell", bundle: Bundle.main)
     tableView.register(settingSwitchCellNib, forCellReuseIdentifier: "SettingSwitchCell")
     let settingNormalCellNib = UINib(nibName: "SettingNormalCell", bundle: Bundle.main)
     tableView.register(settingNormalCellNib, forCellReuseIdentifier: "SettingNormalCell")
-    
+
     // 解决进来不显示大标题的问题
     tableView.contentInsetAdjustmentBehavior = .never
-    
+
     // versionLabel
     versionLabel.font = UIFont(name: "Gotham-Book", size: 12)
     versionLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.6)
     versionLabel.text = "Version \(Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)"
   }
-  
+
   @objc func back() {
     Util.shake()
     pageViewController?.backToCameraViewController()
   }
-  
+
   @objc func getPro() {
     Cache.setLoselessConfig(on: (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! SettingSwitchCell).proSwitch.isOn)
     Cache.setWatermarkConfig(on: (tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! SettingSwitchCell).proSwitch.isOn)
     Cache.setLocationConfig(on: (tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! SettingSwitchCell).proSwitch.isOn)
   }
-  
+
   @objc func sendEmail() {
-    if MFMailComposeViewController.canSendMail(){//是否可以发邮件 // 如果不能,去系统设置接收邮箱
+    if MFMailComposeViewController.canSendMail() {
       let mailView = MFMailComposeViewController()
       mailView.mailComposeDelegate = self
       mailView.setToRecipients(["ravencam@nswbmw.com"])
@@ -70,36 +70,35 @@ class SettingViewController: UIViewController, MFMailComposeViewControllerDelega
       mailView.setMessageBody("", isHTML: false)
       self.present(mailView, animated: false, completion: nil)
     } else {
-      let alert = UIAlertController.init(title: NSLocalizedString("contact_us", comment: ""), message: NSLocalizedString("contact_us_message", comment: ""), preferredStyle: UIAlertController.Style.alert)
-      alert.addAction(UIAlertAction.init(title: NSLocalizedString("ok", comment: ""), style: UIAlertAction.Style.default, handler: { (alert) in
+      let alert = UIAlertController(title: NSLocalizedString("contact_us", comment: ""), message: NSLocalizedString("contact_us_message", comment: ""), preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: ""), style: .default, handler: { _ in
       }))
       self.present(alert, animated: false, completion: nil)
     }
   }
-  
+
   //用户退出邮件窗口时被调用
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-      controller.dismiss(animated: true, completion: nil)
+    controller.dismiss(animated: true, completion: nil)
   }
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
-  
+
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
       return 3
     }
     return 2
   }
-  
+
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 60
   }
-
 
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 40))
@@ -108,7 +107,6 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
 
   // cell 内容
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
     if indexPath.section == 0 {
       var cell: SettingSwitchCell!
       if indexPath.row == 0 {
@@ -124,7 +122,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         cell.titleLabel.text = NSLocalizedString("geolocation", comment: "")
         cell.proSwitch.isOn = Cache.getLocationConfig()
       }
-      
+
       // 添加点击switch事件
       cell.proSwitch.addTarget(self, action: #selector(getPro), for: .valueChanged)
 
@@ -145,7 +143,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
       }
     }
   }
-  
+
   // cell 点击
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 1 {

@@ -14,10 +14,4 @@ class ImagePreviewFunctionView: UIImageView {
   @IBOutlet weak var infoImageView: UIImageView!
   @IBOutlet weak var shareImageView: UIImageView!
   @IBOutlet weak var trashImageView: UIImageView!
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-    
-  }
 }
