@@ -33,12 +33,27 @@ class CameraController: NSObject {
   var photoCaptureCompletionBlock: ((UIImage?, Error?) -> Void)?
 
   let ciContext = CIContext(options:nil)
+
+  private let noirFilter = CIFilter(name: "CIPhotoEffectNoir")
+  private let exposureFilter = CIFilter(name: "CIExposureAdjust")
+  private let contrastFilter = CIFilter(name: "CIColorControls")
+  private let sharpenFilter = CIFilter(name: "CIUnsharpMask")
+  private let vignetteFilter = CIFilter(name: "CIVignette")
+  private let randomGeneratorFilter = CIFilter(name: "CIRandomGenerator")
+  private let colorMatrixFilter = CIFilter(name: "CIColorMatrix")
+  private let sourceOverFilter = CIFilter(name: "CISourceOverCompositing")
+  private let blurFilter = CIFilter(name: "CIMotionBlur")
+
+  deinit {
+    captureSession?.stopRunning()
+  }
 }
 
 extension CameraController {
   func prepare(completionHandler: @escaping (Error?) -> Void) {
     
     func createCaptureSession() {
+      self.captureSession?.stopRunning()
       self.captureSession = AVCaptureSession()
       self.captureSession?.automaticallyConfiguresCaptureDeviceForWideColor = false
     }
@@ -221,13 +236,11 @@ extension CameraController {
   func filterImage(ciInputImage: CIImage) -> UIImage {
     let config = Cache.getConfig()
     
-    let ciFilter = CIFilter(name: "CIPhotoEffectNoir")
-    ciFilter!.setValue(ciInputImage, forKey: kCIInputImageKey)
-    var ciOutputImage = ciFilter!.outputImage!
+    noirFilter?.setValue(ciInputImage, forKey: kCIInputImageKey)
+    var ciOutputImage = noirFilter!.outputImage!
     
     // 曝光
     if (config.exposure ?? 0 != 0) {
-      let exposureFilter = CIFilter(name: "CIExposureAdjust")
       exposureFilter?.setValue(ciOutputImage, forKey: kCIInputImageKey)
       exposureFilter?.setValue(config.exposure! / 2, forKey: "inputEV")
 
@@ -236,7 +249,6 @@ extension CameraController {
     
     // 反差
     if (config.contrast ?? 0 != 0) {
-      let contrastFilter = CIFilter(name: "CIColorControls")
       contrastFilter?.setValue(ciOutputImage, forKey: kCIInputImageKey)
       contrastFilter?.setValue(1 + config.contrast! / 15, forKey: "inputContrast")
 
@@ -245,7 +257,6 @@ extension CameraController {
     
     // 锐化
     if (config.sharpen ?? 0 != 0) {
-      let sharpenFilter = CIFilter(name: "CIUnsharpMask")
       sharpenFilter?.setValue(ciOutputImage, forKey: kCIInputImageKey)
       sharpenFilter?.setValue(config.sharpen!, forKey: "inputRadius")
 
@@ -254,7 +265,6 @@ extension CameraController {
     
     // 暗角
     if (config.vignette ?? 0 != 0) {
-      let vignetteFilter = CIFilter(name: "CIVignette")
       vignetteFilter?.setValue(ciOutputImage, forKey: kCIInputImageKey)
       vignetteFilter?.setValue(2.5, forKey: "inputIntensity")
       vignetteFilter?.setValue(config.vignette! / 5, forKey: "inputRadius")
@@ -264,8 +274,6 @@ extension CameraController {
     
     // 噪点
     if (config.noise ?? 0 != 0) {
-      let randomGeneratorFilter = CIFilter(name: "CIRandomGenerator")
-      let colorMatrixFilter = CIFilter(name: "CIColorMatrix")
       colorMatrixFilter?.setValue(randomGeneratorFilter?.outputImage!, forKey: kCIInputImageKey)
       
       colorMatrixFilter?.setValue(CIVector(x: 0, y: 1, z: 0), forKey: "inputRVector")
@@ -278,17 +286,15 @@ extension CameraController {
       colorMatrixFilter?.setValue(alphaVector, forKey: "inputAVector")
       colorMatrixFilter?.setValue(CIVector(x: 0, y: 0, z: 0), forKey: "inputBiasVector")
       
-      let sourceOverCompositingFilter = CIFilter(name: "CISourceOverCompositing")
-      sourceOverCompositingFilter!.setValue(ciOutputImage, forKey: kCIInputBackgroundImageKey )
-      sourceOverCompositingFilter!.setValue(colorMatrixFilter?.outputImage, forKey: kCIInputImageKey)
+      sourceOverFilter?.setValue(ciOutputImage, forKey: kCIInputBackgroundImageKey)
+      sourceOverFilter?.setValue(colorMatrixFilter?.outputImage, forKey: kCIInputImageKey)
 
-      ciOutputImage = sourceOverCompositingFilter!.outputImage!
+      ciOutputImage = sourceOverFilter!.outputImage!
     }
 
     // 模糊
     if (config.blur ?? 0 != 0) {
-      let blurFilter = CIFilter(name: "CIMotionBlur")
-      blurFilter!.setValue(ciOutputImage, forKey: kCIInputImageKey)
+      blurFilter?.setValue(ciOutputImage, forKey: kCIInputImageKey)
       blurFilter?.setValue(config.blur! * 2, forKey: "inputRadius")
       blurFilter?.setValue(90, forKey: "inputAngle")
 

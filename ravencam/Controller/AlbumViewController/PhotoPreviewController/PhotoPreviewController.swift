@@ -16,7 +16,8 @@ class PhotoPreviewController: UIViewController {
   var assets:[PHAsset]
   let options: PHImageRequestOptions = {
     let _options = PHImageRequestOptions()
-    _options.isSynchronous = true
+    _options.isSynchronous = false
+    _options.deliveryMode = .highQualityFormat
     return _options
   }()
 
@@ -162,7 +163,16 @@ class PhotoPreviewController: UIViewController {
     } completionHandler: { success, error in
       if (success) {
         DispatchQueue.main.async {
-          self.dismiss(animated: true, completion: nil)
+          self.assets.remove(at: self.index)
+          if self.assets.isEmpty {
+            self.dismiss(animated: true, completion: nil)
+          } else {
+            let safeIndex = min(self.index, self.assets.count - 1)
+            self.index = safeIndex
+            self.collectionView.reloadData()
+            let indexPath = IndexPath(item: safeIndex, section: 0)
+            self.collectionView.scrollToItem(at: indexPath, at: .left, animated: false)
+          }
         }
       }
     }

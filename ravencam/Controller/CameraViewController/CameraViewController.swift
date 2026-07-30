@@ -116,7 +116,7 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
     functionScrollView.blurImageView.addGestureRecognizer(blurImageViewTap)
     // 重置事件
     let resetImageViewTap = MyTapGesture(target: self, action: #selector(resetConfig))
-    resetImageViewTap.ref = "blur"
+    resetImageViewTap.ref = "reset"
     functionScrollView.resetImageView.addGestureRecognizer(resetImageViewTap)
   
     // 点击空白区域，隐藏sliderView
@@ -285,12 +285,13 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
   // 显示toast
   func showToast(message: String) {
     toastLabel.text = message
-    UIView.animate(withDuration: 0.25) {
+    UIView.animate(withDuration: 0.25, animations: {
       self.toastLabel.alpha = 1
+    }, completion: { _ in
       UIView.animate(withDuration: 0.25, delay: 2, options: [], animations: {
         self.toastLabel.alpha = 0
       }, completion: nil)
-    }
+    })
   }
 
   // 跳转相册
@@ -311,7 +312,9 @@ class CameraViewController: UIViewController, CLLocationManagerDelegate {
         print(error ?? "Capture error")
         return
       }
-      self.showToast(message: NSLocalizedString("saved", comment: ""))
+      DispatchQueue.main.async {
+        self.showToast(message: NSLocalizedString("saved", comment: ""))
+      }
       
       // 是否添加日期水印
       if Cache.getWatermarkConfig() == true {

@@ -22,23 +22,28 @@ struct UserDefault<T: Codable> {
 
 class Cache {
   // 默认拍摄设置
-  private static let defaultPhoto = Photo(JSON: [
-    "flash": "off",
-    "flip": "back",
-    "exposure": 0,
-    "contrast": 0,
-    "sharpen": 0,
-    "vignette": 0,
-    "noise": 0,
-    "blur": 0
-  ])!
+  private static var defaultPhoto: Photo {
+    return Photo(JSON: [
+      "flash": "off",
+      "flip": "back",
+      "exposure": 0,
+      "contrast": 0,
+      "sharpen": 0,
+      "vignette": 0,
+      "noise": 0,
+      "blur": 0
+    ])!
+  }
   
   // 保存拍摄设置
   @UserDefault(key: "config", defaultValue: nil)
   private static var configCache: Photo?
   
   static func getConfig() -> Photo {
-    return configCache ?? defaultPhoto
+    if let config = configCache {
+      return config
+    }
+    return defaultPhoto
   }
   
   static func setConfig(config: Photo) {
@@ -46,7 +51,7 @@ class Cache {
   }
   
   static func clearConfig() {
-    Defaults.shared.clear(Key<Photo>("config"))
+    configCache = nil
   }
   
   // 保存图片元信息

@@ -18,7 +18,8 @@ class AlbumViewController: UIViewController {
   var assets: [PHAsset] = []
   let options: PHImageRequestOptions = {
     let _options = PHImageRequestOptions()
-    _options.isSynchronous = true
+    _options.isSynchronous = false
+    _options.deliveryMode = .opportunistic
     return _options
   }()
   
@@ -77,7 +78,9 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlbumCollectionViewCell", for: indexPath) as! AlbumCollectionViewCell
     let asset = assets[indexPath.row]
     
-    PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options, resultHandler: { (img, info) in
+    let cellSize = (UIScreen.main.bounds.size.width - 18 * 3) / 2
+    let targetSize = CGSize(width: cellSize * UIScreen.main.scale, height: cellSize * UIScreen.main.scale)
+    PHImageManager.default().requestImage(for: asset, targetSize: targetSize, contentMode: .aspectFill, options: options, resultHandler: { (img, info) in
       if let img = img {
         cell.image = img
       }

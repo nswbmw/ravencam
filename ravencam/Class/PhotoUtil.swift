@@ -13,8 +13,6 @@ class PhotoUtil: NSObject {
 
     private var assetCollection:PHAssetCollection!
     private var albumFound:Bool = false
-    private var photoAsset:PHFetchResult<AnyObject>!
-    private var collection:PHAssetCollection!
     private var assetCollectionPlaceholder:PHObjectPlaceholder!
     private var albumName = "RavenCam"
     private var image:UIImage!
@@ -85,7 +83,7 @@ class PhotoUtil: NSObject {
             array.append(collection)
         }
         for item in array{
-            if item.localizedTitle == self.albumName{
+            if item.localizedTitle == name{
                 return item
             }
         }
